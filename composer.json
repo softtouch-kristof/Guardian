@@ -1,0 +1,23 @@
+{
+    "name": "Cloudoki/guardian",
+    "description": "",
+    "authors": [
+        {
+            "name": "Cloudoki",
+            "email": "koen@cloudoki.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Cloudoki\\Guardian\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
