@@ -1,6 +1,9 @@
 {
     "name": "cloudoki/guardian",
-    "description": "",
+    "description": "Internal Authorisation scopes for Laravel",
+	"homepage": "http://github.com/Cloudoki/Guardian",
+	"keywords": ["authorisation","laravel"],
+    "license":"MIT",
     "authors": [
         {
             "name": "Cloudoki",
