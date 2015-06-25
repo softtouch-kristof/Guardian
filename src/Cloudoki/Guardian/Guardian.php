@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Input;
-use Donderlab\Bouncer\Oauth2Verifier;
+use Cloudoki\OaStack\Oauth2Verifier;
 use OAuth2\Response;
 
 
