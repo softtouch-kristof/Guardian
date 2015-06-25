@@ -17,10 +17,7 @@
         "cloudoki/except-io-nal": "dev-master"
     },
     "autoload": {
-        "classmap": [
-            "src/migrations"
-        ],
-        "psr-0": {
+       "psr-0": {
             "Cloudoki\\Guardian\\": "src/"
         }
     },
