@@ -21,11 +21,8 @@ class Guardian
 	{
 		return !
 		(
-			// Is there an access token?
-			!Input::get ('access_token') ||
-			
 			// Is the acces token valid?
-			!self::validAccess () ||
+			!self::validAccess (Input::get ('access_token')) ||
 			
 			// Is the user and account connected?
 			($accountid && !self::accountRelation ($accountid)) ||
@@ -68,9 +65,13 @@ class Guardian
 	 *
 	 *	@return boolean
 	 */
-	public static function validAccess ()
+	public static function validAccess ($token)
 	{	
-		return Oauth2Verifier::isValid();
+		# Is the token provided?
+		if(!$token) return false;
+		
+		# Does token exist within expiration scope?
+		return (bool) Oauth2AccessToken::validated ($token)->count ();
 	}
 	
 	/**
