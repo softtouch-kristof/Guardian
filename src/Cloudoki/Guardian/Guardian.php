@@ -2,9 +2,6 @@
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Input;
-use Cloudoki\OaStack\Oauth2AccessToken;
-use Cloudoki\OaStack\Oauth2Verifier;
-
 
 class Guardian
 {	
