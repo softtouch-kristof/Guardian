@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Input;
+use Cloudoki\OaStack\Oauth2AccessToken;
 use Cloudoki\OaStack\Oauth2Verifier;
-use OAuth2\Response;
 
 
 class Guardian
@@ -19,13 +19,15 @@ class Guardian
 	 */
 	public static function allowed ($accountid = null, $roles = array())
 	{
+		$token = Input::get ('access_token');
+		
 		return !
 		(
 			// Is the acces token valid?
-			!self::validAccess (Input::get ('access_token')) ||
+			!self::validAccess ($token) ||
 			
 			// Is the user and account connected?
-			($accountid && !self::accountRelation ($accountid)) ||
+			($accountid && !self::accountRelation ($token, $accountid)) ||
 			
 			// Has the user the required roles for the account?
 			($accountid && count($roles) && !self::hasRoles ($accountid, $roles))
@@ -52,11 +54,19 @@ class Guardian
 	 *	User
 	 *	Show current user.
 	 *
+	 *	@param	string	$token
 	 *	@return User
 	 */
-	public static function user ()
+	public static function user ($token)
 	{			
-		return Oauth2Verifier::getUser ();
+		if (!$token)
+			
+			throw new \InvalidParameterException ('an access token is required');
+		
+		
+		return Oauth2AccessToken::validated ($token)->first()->user;
+		
+		//return Oauth2Verifier::getUser ();
 	}
 	
 	/**
@@ -83,14 +93,14 @@ class Guardian
 	 *	@return boolean
 	 *	@throws \InvalidParameterException
 	 */
-	public static function accountRelation ($id)
+	public static function accountRelation ($token, $id)
 	{	
 		if (!is_int ($id))
 			
 			throw new \InvalidParameterException ('an integer ID is required');
 		
 		// User contains account
-		return self::user ()-> accounts->contains ($id);
+		return self::user ($token)-> accounts->contains ($id);
 	}
 	
 	/**
