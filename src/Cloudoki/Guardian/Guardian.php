@@ -79,7 +79,7 @@ class Guardian
 		if(!$token) return false;
 		
 		# Does token exist within expiration scope?
-		return (bool) Cloudoki\OaStack\Oauth2AccessToken::validated ($token)->count ();
+		return (bool) Oauth2AccessToken::validated ($token)->count ();
 	}
 	
 	/**
