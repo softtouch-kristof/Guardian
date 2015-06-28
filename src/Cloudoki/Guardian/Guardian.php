@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Input;
-use Cloudoki\OaStack\Oauth2AccessToken;
+//use Cloudoki\OaStack\Oauth2AccessToken;
 
 class Guardian
 {	
@@ -79,7 +79,7 @@ class Guardian
 		if(!$token) return false;
 		
 		# Does token exist within expiration scope?
-		return (bool) Oauth2AccessToken::validated ($token)->count ();
+		return (bool) Cloudoki\OaStack\Oauth2AccessToken::validated ($token)->count ();
 	}
 	
 	/**
