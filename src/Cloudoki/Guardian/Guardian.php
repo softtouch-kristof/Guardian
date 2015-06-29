@@ -63,8 +63,6 @@ class Guardian
 		
 		
 		return Oauth2AccessToken::validated ($token)->first()->user;
-		
-		//return Oauth2Verifier::getUser ();
 	}
 	
 	/**
@@ -97,7 +95,7 @@ class Guardian
 			
 			throw new \InvalidParameterException ('an integer ID is required');
 		
-		// User contains account
+		# User contains account
 		return self::user ($token)-> accounts->contains ($id);
 	}
 	

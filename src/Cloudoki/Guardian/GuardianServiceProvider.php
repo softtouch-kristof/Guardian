@@ -1,6 +1,4 @@
-<?php
-
-namespace Cloudoki\Guardian;
+<?php namespace Cloudoki\Guardian;
 
 use Illuminate\Support\ServiceProvider;
 
