@@ -12,7 +12,6 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "illuminate/support": "4.2.*",
         "cloudoki/oauth2-stack": "dev-master",
         "cloudoki/except-io-nal": "dev-master"
     },
