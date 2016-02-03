@@ -13,10 +13,10 @@
     "require": {
         "php": ">=5.4.0",
         "cloudoki/oauth2-stack": "dev-master",
-        "cloudoki/except-io-nal": "dev-master"
+        "cloudoki/except-io-nal": "v0.5.*"
     },
     "autoload": {
-       "psr-0": {
+       "psr-4": {
             "Cloudoki\\Guardian\\": "src/"
         }
     },
