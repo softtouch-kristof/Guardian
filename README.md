@@ -9,6 +9,50 @@ This package is usable in multiple Laravel versions. Right now, however, the Gua
 
 **Except-io-nal** - The Cloudoki PHP Exception extensions are used to throw manageable errors when authorisations are not valid.
 
+## Install Laravel 5.2 MQ
+Add our package as requirement in your composer file.
+```
+$ nano composer.json
+```
+```
+"require": {
+    "laravel/framework": "5.2.*",
+    "cloudoki/guardian": "dev-master"
+    ...
+```
+You might want to run an update. If something goes wrong, change your `minimum-stability` to `dev` in the `composer.json` file, for now.
+```
+$ composer update
+```
+
+
+The package is now installed in the project `vendor` folder. You'll need to register the package provider in your app config file next.
+Since Laravel 5, the Illuminate\Form is no longer part of the core pack, so you should register it as well.
+```
+$ nano config/app.php
+```
+```
+	'providers' => [
+		...
+		Collective\Html\HtmlServiceProvider::class,
+		Cloudoki\OaStack\OaStackServiceProvider::class,
+		Cloudoki\Guardian\GuardianServiceProvider::class
+    ],
+
+	'aliases' => [
+		...
+        'Form'		=> Collective\Html\FormFacade::class,
+        'Guardian'	=> Cloudoki\Guardian\GuardianFacade::class,
+        'HTML'		=> Collective\Html\HtmlFacade::class,
+    ],
+```
+
+### DB Migration
+Of course, your backend workers need db access for validation. It goes something like this:
+
+
+
+
 ##Usage
 ####Oauth2 Stack
 Please [dig into](http://blog.cloudoki.com/oauth2-stack/) the Oauth2 Stack documentation before implementing Guardian.
