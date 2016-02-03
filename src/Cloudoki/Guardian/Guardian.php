@@ -45,7 +45,7 @@ class Guardian
 	{	
 		if (!self::allowed($accountid, $roles))
 			
-			throw new \InvalidUserException ('not authorized');
+			throw new \Cloudoki\InvalidUserException ('not authorized');
 	}
 	
 	/**
@@ -59,7 +59,7 @@ class Guardian
 	{			
 		if (!$token)
 			
-			throw new \InvalidParameterException ('an access token is required');
+			throw new \Cloudoki\InvalidParameterException ('an access token is required');
 		
 		
 		return Oauth2AccessToken::validated ($token)->first()->user;
@@ -93,7 +93,7 @@ class Guardian
 	{	
 		if (!is_int ($id))
 			
-			throw new \InvalidParameterException ('an integer ID is required');
+			throw new \Cloudoki\InvalidParameterException ('an integer ID is required');
 		
 		# User contains account
 		return self::user ($token)-> accounts->contains ($id);
@@ -116,7 +116,7 @@ class Guardian
 	{
 		if(!isset ($role) || !is_string ($role))
 		
-			throw new \InvalidParameterException ('Invalid roletokens container type');
+			throw new \Cloudoki\InvalidParameterException ('Invalid roletokens container type');
 	
 		
 		// User vs Account rolesset
