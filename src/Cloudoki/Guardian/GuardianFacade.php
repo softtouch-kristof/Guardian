@@ -1,4 +1,4 @@
-<?php namespace Cloudoki\Guardian\Facades;
+<?php namespace Cloudoki\Guardian;
 
 use Illuminate\Support\Facades\Facade;
 

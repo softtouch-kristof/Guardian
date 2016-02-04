@@ -1,7 +1,7 @@
 <?php namespace Cloudoki\Guardian;
 
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Input;
+//use Illuminate\Support\Facades\App;
+//use Illuminate\Support\Facades\Input;
 use Cloudoki\OaStack\Oauth2AccessToken;
 
 class Guardian

@@ -18,9 +18,14 @@ class GuardianServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('cloudoki/guardian');
+		#Oauth2 Migrations
+		$this->publishes(
+		[
+			__DIR__.'/../../migrations/' => database_path ('migrations')
+		], 'migrations');
 	}
-
+	
+	
 	/**
 	 * Register the service provider.
 	 *
@@ -41,7 +46,7 @@ class GuardianServiceProvider extends ServiceProvider {
 	 */
 	public function provides()
 	{
-		return array('guardian');
+		return ['guardian'];
 	}
 
 }
