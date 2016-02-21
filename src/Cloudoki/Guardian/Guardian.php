@@ -15,10 +15,12 @@ class Guardian
 	 */
 	public static function allowed ($accountid = null, $roles = array())
 	{
+		$token = jobload ('access_token');
+		
 		return !
 		(
 			// Is the acces token valid?
-			!self::validAccess (jobload ('access_token')) ||
+			!self::validAccess ($token) ||
 
 			// Is the user and account connected?
 			($accountid && !self::accountRelation ($token, $accountid)) ||
