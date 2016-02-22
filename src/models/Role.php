@@ -1,65 +1,51 @@
-<?php 
+<?php
 namespace Cloudoki\Guardian;
 
-use \Illuminate\Database\Eloquent\Model as Eloquent;
+use App\Models\BaseModel;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-/**
- *	Role Model	
- *	Add the namespace if you want to extend your custom Role model with this one.	
- */
+class Role extends BaseModel
+{
+    use SoftDeletes;
 
-class Role extends Eloquent {
+    /**
+     * The model type.
+     *
+     * @const string
+     */
+    const type = 'role';
 
-	use SoftDeletingTrait;
 
-	/**
-	 * Fillables
-	 * define which attributes are mass assignable (for security)
+    protected $fillable = ['slug','description'];
+
+    /**
+	 * Roles relationship
 	 *
-	 * @var array
+	 * @return BelongsToMany
 	 */
-	protected $fillable = ['name', 'description'];
-	
-    protected $dates = ['deleted_at'];
-    
-	/**
-	 * Account relationship
-	 *
-	 * @return BelongsTo
-	 */
-	public function accounts ()
+	public function rolegroups ()
 	{
-		return $this->belongsTo ('Account');
-	}
-	
-	/**
-	 * Tokens relationship
-	 *
-	 * @return HasMany
-	 */
-	public function roletokens ()
-	{
-		return $this->hasMany ('RoleTokens');
+		return $this->belongsToMany ('Cloudoki\Guardian\Rolegroup');
 	}
 
-	/**
-	 * Get role name
+    /**
+	 * Get role slug
 	 *
 	 * @return	string
 	 */
-	public function getName ()
+	public function getSlug ()
 	{
 		return $this->name;
 	}
 
 	/**
-	 * Set role name
+	 * Set role slug
 	 *
-	 * @param	string	$name
+	 * @param	string	$slug
 	 */
-	public function setName ($name)
+	public function setSlug ($slug)
 	{
-		$this->name = $name;
+		$this->name = $slug;
 		
 		return $this;
 	}

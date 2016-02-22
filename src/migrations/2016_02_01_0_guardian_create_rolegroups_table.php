@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class GuardianCreateRolesTable extends Migration {
+class GuardianCreateRolegroupsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,14 +12,14 @@ class GuardianCreateRolesTable extends Migration {
 	 */
 	public function up ()
 	{
-		if (!Schema::hasTable('roles'))
+		if (!Schema::hasTable('rolegroups'))
 		
-			Schema::create ('roles', function (Blueprint $table)
+			Schema::create ('rolegroups', function (Blueprint $table)
 			{
 				$table->increments ('id');
 				$table->string ('name', 32);
 				$table->string ('description', 256)->nullable ();
-				$table->integer ('account_id')->nullable ();
+				$table->text ('limits')->nullable ();
 				
 				$table->softDeletes();
 				$table->timestamps ();
@@ -33,7 +33,7 @@ class GuardianCreateRolesTable extends Migration {
 	 */
 	public function down ()
 	{
-		Schema::dropIfExists ('roles');
+		Schema::dropIfExists ('rolegroups');
 	}
 
 }

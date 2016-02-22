@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class GuardianCreateRoleTokensTable extends Migration {
+class GuardianCreateRolesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,9 @@ class GuardianCreateRoleTokensTable extends Migration {
 	 */
 	public function up()
 	{
-		if (!Schema::hasTable('role_tokens'))
+		if (!Schema::hasTable('roles'))
 			
-			Schema::create ('role_tokens', function (Blueprint $table)
+			Schema::create ('roles', function (Blueprint $table)
 			{
 				$table->increments ('id');
 				$table->string ('slug', 64);
@@ -29,7 +29,7 @@ class GuardianCreateRoleTokensTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists ('role_tokens');
+		Schema::dropIfExists ('roles');
 	}
 
 }
