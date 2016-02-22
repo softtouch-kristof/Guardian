@@ -1,12 +1,10 @@
 <?php
-namespace Cloudoki\Guardian;
+namespace Cloudoki\Guardian\Models;
 
 use App\Models\BaseModel;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Role extends BaseModel
 {
-    use SoftDeletes;
 
     /**
      * The model type.
@@ -15,17 +13,25 @@ class Role extends BaseModel
      */
     const type = 'role';
 
-
     protected $fillable = ['slug','description'];
+    
+    /**
+	 * Since we're using an existing db and Eloquent expects us to have (by default)
+	 * the updated_at, created_at columns, we need to disable the automatic timestamp updates
+	 * on this model
+	 *
+	 * @var bool
+	 */
+	public $timestamps = false;
 
     /**
-	 * Roles relationship
+	 * Rolegroups relationship
 	 *
 	 * @return BelongsToMany
 	 */
 	public function rolegroups ()
 	{
-		return $this->belongsToMany ('Cloudoki\Guardian\Rolegroup');
+		return $this->belongsToMany ('Cloudoki\Guardian\Models\Rolegroup');
 	}
 
     /**

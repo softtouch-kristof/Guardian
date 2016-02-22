@@ -1,16 +1,18 @@
 <?php 
-namespace Cloudoki\Guardian;
+namespace Cloudoki\Guardian\Models;
 
-use \Illuminate\Database\Eloquent\Model as Eloquent;
+use App\Models\BaseModel;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  *	Role Model	
  *	Add the namespace if you want to extend your custom Role model with this one.	
  */
 
-class Rolegroup extends Eloquent {
-
-	use SoftDeletingTrait;
+class Rolegroup extends BaseModel
+{
+	use SoftDeletes;
 
 	/**
 	 * Fillables
@@ -33,13 +35,13 @@ class Rolegroup extends Eloquent {
 	}
 	
 	/**
-	 * Tokens relationship
+	 * Roles relationship
 	 *
-	 * @return HasMany
+	 * @return BelongsToMany
 	 */
 	public function roles ()
 	{
-		return $this->hasMany ('Cloudoki\Guardian\Role');
+		return $this->belongsToMany ('Cloudoki\Guardian\Models\Role');
 	}
 
 	/**

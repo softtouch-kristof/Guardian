@@ -2,8 +2,8 @@
 
 namespace Database\Seeds;
 
-use Cloudoki\Guardian\Role;
-use Cloudoki\Guardian\Rolegroup;
+use Cloudoki\Guardian\Models\Role;
+use Cloudoki\Guardian\Models\Rolegroup;
 use Illuminate\Database\Seeder;
 
 class GuardianRolesSeeder extends Seeder

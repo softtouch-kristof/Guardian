@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class GuardianCreateRolegroupRoleTable extends Migration {
+class GuardianCreateRoleRolegroupTable extends Migration {
 
 	/**
 	 * Run the migrations.
