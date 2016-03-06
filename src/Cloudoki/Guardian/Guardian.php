@@ -15,7 +15,7 @@ class Guardian
 	 */
 	public static function allowed ($accountid = null, $roles = array())
 	{
-		$token = request ()->access_token; //jobload ('access_token');
+		$token = config ('app.access_token', null);
 		
 		return !
 		(
@@ -57,7 +57,7 @@ class Guardian
 	{
 		if (!$token)
 
-			$token = request ()->access_token;
+			$token = config ('app.access_token', null);
 
 
 		return Oauth2AccessToken::validated ($token)->first()->user;
