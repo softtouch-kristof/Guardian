@@ -62,6 +62,24 @@ class Guardian
 
 		return Oauth2AccessToken::validated ($token)->first()->user;
 	}
+	
+	/**
+	 *	User id
+	 *	Show current user.
+	 *
+	 *	@param	string	$token
+	 *	@param	class	$class_override
+	 *	@return User
+	 */
+	public static function userId ($token = null)
+	{
+		if (!$token)
+
+			$token = config ('app.access_token', null);
+
+
+		return Oauth2AccessToken::validated ($token)->first()->user_id;
+	}
 
 	/**
 	 *	Valid access
